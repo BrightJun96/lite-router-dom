@@ -2,6 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
+import Foo from "./foo";
+import {Route, Router} from "./packages/lite-router";
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(
@@ -9,7 +11,16 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <App />
+      <Router>
+          <Route
+          path={"/"}
+          component={<App/>}
+          />
+          <Route
+          path={"/foo"}
+          component={<Foo/>}
+          />
+      </Router>
   </React.StrictMode>
 );
 
