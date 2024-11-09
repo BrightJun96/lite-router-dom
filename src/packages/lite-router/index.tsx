@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 
 interface RouteProps {
     component?: React.ReactNode;
@@ -16,20 +16,25 @@ export function Route({path,component}:RouteProps){
 }
 
 export function Router({children}:RouterProps){
+    const [currentPath, setCurrentPath] = useState(window.location.pathname);
+
     useEffect(() => {
         const onLocationChange = () => {
-            console.log("location changed");
-        };
+            setCurrentPath(window.location.pathname);
+        }
 
-        // popstate 이벤트를 감지하여 경로가 변경되었을 때 상태 업데이트
         window.addEventListener('popstate', onLocationChange);
 
         return () => {
             window.removeEventListener('popstate', onLocationChange);
-        };
-    }, []);
-
+        }
+    },[])
     return <>
-        {children}
+        {React.Children.map(children, (child) => {
+            if (React.isValidElement(child) && child.props.path === currentPath) {
+                return child;
+            }
+            return null;
+        })}
     </>
 }

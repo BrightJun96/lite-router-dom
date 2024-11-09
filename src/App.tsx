@@ -2,6 +2,7 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import {Router} from "./packages/lite-router";
+import {useNavigate} from "./packages/lite-router/hooks";
 
 /**
  * 특정 라우트에 컴포넌트를 어떻게 적용할 수 있을까?
@@ -10,16 +11,14 @@ import {Router} from "./packages/lite-router";
 function App() {
 
 
-
+const navigate = useNavigate()
 
   return (
       <div className="App">
-        <button onClick={() => window.history.pushState({page: 2}, "", "bab")}>
-          Go to Page 2
+        <button onClick={() => navigate("/foo") }>
+            Foo
         </button>
-        <button onClick={() => window.history.pushState({page: 3}, "", "hab")}>
-          Go to Page 3
-        </button>
+
       </div>
   );
 }
