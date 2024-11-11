@@ -4,6 +4,26 @@ react-router-dom과 같이 구현
 ## 개발 서버 시작
 yarn dev
 
+## Example
+```tsx
+const root = ReactDOM.createRoot(
+  document.getElementById('root') as HTMLElement
+);
+root.render(
+  <React.StrictMode>
+      <Router>
+          <Route
+          path={"/"}
+          component={<App/>}
+          />
+          <Route
+          path={"/foo"}
+          component={<Foo/>}
+          />
+      </Router>
+  </React.StrictMode>
+);
+```
 
 ## 컴포넌트 및 훅
 
