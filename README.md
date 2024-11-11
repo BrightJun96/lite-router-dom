@@ -6,6 +6,9 @@ yarn dev
 
 ## Example
 ```tsx
+import {Route, Router} from "./packages/lite-router";
+
+
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
